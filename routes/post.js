@@ -13,10 +13,10 @@ router.post("/write", async (req, res) =>{
         title,
         content,
         imageUrl,
-        nickName : user.nickName,
+        // nickName : user.nickName,
     })
-    // res.json({post : createPost});
-    res.status(201).json({result: 'success', msg: '글이 등록되었습니다.'});
+     res.json({post : createPost});
+    // res.status(201).json({result: 'success', msg: '글이 등록되었습니다.'});
 
 })
 //게시물 조회
