@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     nickName: {
         type: String,
-        unique: true,
-        required: true,
     },
 
     password: {

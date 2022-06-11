@@ -7,6 +7,7 @@ const userRouter = require("./routes/user");
  
 
 mongoose.connect('mongodb://0.0.0.0/goodnight', {
+
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

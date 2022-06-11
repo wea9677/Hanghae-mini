@@ -46,6 +46,7 @@ const postUsersSchema = Joi.object({
       res.status(400).send({
         errorMesssage: "요청한 데이터 형식이 올바르지 않습니다.",
       });
+      console.log(error)
     }
   });
 
@@ -84,6 +85,7 @@ const postUsersSchema = Joi.object({
       userId: user.userId,
       nickName: user.nickName,
     });
+    console.log(user)
   });
 
   module.exports = router;
