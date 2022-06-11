@@ -3,6 +3,12 @@ const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema(
     {
+        nickName : {
+                type:String,
+                required : true,
+                trim: true
+        },
+
         title : {
             type : String,
             required : true,
@@ -33,6 +39,8 @@ PostSchema.virtual("contentId").get(function () {
   PostSchema.set("toJSON", {
     virtuals: true,
   });
+
+
 
 
 module.exports = mongoose.model('Post', PostSchema);

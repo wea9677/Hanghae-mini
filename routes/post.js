@@ -1,24 +1,33 @@
 const express = require("express");
+const authMiddleware = require("../middlewares/auth-middleware");
 const Post = require("../models/post");
-const User = require("../models/user");
+
 const router = express.Router();
 
 
 
 //게시물 등록하기
-router.post("/write", async (req, res) =>{
-    const {title, content, imageUrl } = req.body;
-    let { user } = res.locals;
-    const createPost = await Post.create({
-        title,
-        content,
-        imageUrl,
-        // nickName : user.nickName,
-    })
-     res.json({post : createPost});
-    // res.status(201).json({result: 'success', msg: '글이 등록되었습니다.'});
+router.post("/write", authMiddleware, async (req, res) =>{
+    
+    try {
+        
+        const nickName = res.locals.user.nickName;
+        const {title, content, imageUrl} = req.body;
+        const createPost = await Post.create({
+             title, content, imageUrl, nickName:nickName
+        });
+        console.log(createPost);
+        console.log(nickName);
+        res.json({post : createPost});
+        // res.json({result : "success", msg:"작성 완료 되었습니다."});
+    } catch (err) {
+        console.log(err)
+        res.status(400).json({result:"fail", meg:"작성 실패"})
+    }
+    
+  
 
-})
+});
 //게시물 조회
 router.get("/main", async (req, res) =>{
    const contents = await Post.find().sort({createdAt : 'desc'});
@@ -30,7 +39,7 @@ router.get("/main", async (req, res) =>{
 
 //게시물 상세조회
 
-router.get("/main/:contentId", async (req, res)=>{
+router.get("/main/:contentId", authMiddleware, async (req, res)=>{
     const {contentId} = req.params;
     const post = await Post.findById(contentId);
 
@@ -55,10 +64,19 @@ router.get("/main/:contentId", async (req, res)=>{
 //게시물 수정
 
 router.patch("/write/:contentId", async (req, res)=> {
+    const nickName = res.locals.user.nickName;
     const {contentId} = req.params;
     const {title, content, imageUrl} = req.body;
    
     const existsPost = await Post.findById(contentId);
+    const chackPost = await Post.findOne(nickName);
+    if (!nickName.length) {
+        res.status(400).send({
+            errorMesssage:"작성한 닉네임과 일치하지 않습니다."
+        });
+        return;
+
+    }
    
     const modifyPost =  await Post.findByIdAndUpdate(contentId, {
            $set : {title:title, content:content, imageUrl : imageUrl} ,

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { User } = require("../models/user");
+const User  = require("../models/user");
 
 module.exports = (req, res, next) => {
     try {
@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
 
     if(tokenType !== 'Bearer') {
         res.status(401).send({
-            errorMessaage: '로그인 후 사용하세요'
+            errorMessaage: '로그인 후 사용하세요!'
         });
         return;
     }
