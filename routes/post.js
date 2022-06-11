@@ -11,13 +11,13 @@ router.post("/write", authMiddleware, async (req, res) =>{
     
     try {
         
-        const nickName = res.locals.user.nickName;
+        const {nickName} = res.locals.user;
         const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
              title, content, imageUrl, nickName
         });
-        console.log(createPost);
-        console.log(nickName);
+        // console.log(createPost);
+        // console.log(nickName);
         res.json({post : createPost});
         // res.json({result : "success", msg:"작성 완료 되었습니다."});
     } catch (err) {
@@ -70,13 +70,13 @@ router.patch("/write/:contentId", async (req, res)=> {
    
     const existsPost = await Post.findById(contentId);
     // const chackPost = await Post.findOne(nickName);
-    // if (!nickName.length) {
-    //     res.status(400).send({
-    //         errorMesssage:"작성한 닉네임과 일치하지 않습니다."
-    //     });
-    //     return;
+    if (!nickName.length) {
+        res.status(400).send({
+            errorMesssage:"작성한 닉네임과 일치하지 않습니다."
+        });
+        return;
 
-    // }
+    }
    
     const modifyPost =  await Post.findByIdAndUpdate(contentId, {
            $set : {title:title, content:content, imageUrl : imageUrl} ,

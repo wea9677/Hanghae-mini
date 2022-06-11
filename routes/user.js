@@ -30,7 +30,9 @@ const postUsersSchema = Joi.object({
 
       const existUsers = await User.find({ 
         $or:[{email}, {nickName}]
+        
     });
+    console.log(email, nickName);
     if (existUsers.length) {
         res.status(400).send({
             errorMesssage:"중복된 닉네임, 또는 이메일이 존재합니다."
@@ -40,7 +42,7 @@ const postUsersSchema = Joi.object({
   
       const users = new User({ nickName, password, email });
       await users.save();
-
+      console.log(users)
       res.status(201).send({});
     } catch (error) {
       res.status(400).send({
@@ -57,34 +59,75 @@ const postUsersSchema = Joi.object({
   });
   
   router.post("/login", async (req, res) => {//로그인
-    try {
-      const { email, password } = await postAuthSchema.validateAsync(req.body);
-  
-      const user = await User.findOne({ where: { email, password } });
-  
-      if (!user) {
-        res.status(400).send({
-          errorMesssage: "닉네임또는 패스워드가 잘못됐습니다.",
-        });
-        return;
-      }
-  
-      const token = jwt.sign({ userId: user.userId }, "mini-secret-key");
-      res.send({
-        token,
-      });
-    } catch (error) {
-      res.status(400).send({
-        errorMesssage: "요청한 데이터 형식이 올바르지 않습니다.",
-      });
-    }
-  });
+        const {email, password} = req.body;
 
-  router.get("/signup/me",authMiddelware, async (req, res) => { //로그인 조회
-    const { user } = res.locals;
+        const user = await User.findOne({ email, password }).exec();
+        if (!user) {
+            res.status(400).send({
+                errorMessage: '닉네임 또는 패스워드를 확인해주세요.',
+            });
+            return;
+        }
+
+        // const id = user.userId;
+        const token = jwt.sign({ userId: user.userId }, "mini-secret-key"); 
+        res.status(200).send({ message: "로그인에 성공했습니다", token });
+        console.log(token);
+        console.log(user);
+    });
+
+        // const { email, password } = await postAuthSchema.validateAsync(req.body)
+        // const user = await User.findOne({email});
+        // console.log(user);
+       
+        // const userCompared = await User.findOne(password, user.password);
+        // if(!userCompared){
+        //     return res.status(400).send({errorMessage: "이메일이나 비밀번호가 올바르지 않습니다."})
+        // }
+        // console.log(userCompared);
+    
+   
+      // const { email, password } = await postAuthSchema.validateAsync(req.body);
+  
+      // const existUser = await User.findOne({ email, password });
+  
+      // if (!existUser) {
+      //   res.status(400).send({
+      //     errorMesssage: "이메일이 잘못되었습니다.",
+      //   });
+      //   return;
+      // }
+      // if (!password ){
+      //   res.status(400).send({
+      //     errorMesssage: "비밀번호가 틀렸습니다.",
+      //   });
+      //   return;
+      // }
+
+  
+  //     const token = jwt.sign({ userId: User.userId }, "mini-secret-key");
+  //     res.send({
+  //       token,
+  //     });
+    
+  //     res.status(400).send({
+  //       errorMesssage: "요청한 데이터 형식이 올바르지 않습니다.",
+  //     });
+    
+  // });
+
+  router.get("/signup/me", authMiddelware, (req, res) => { //로그인 조회
+    // const { user } = res.locals;
+    // console.log(res.locals);
+    
+    // res.send({ user: { userId: user.userId, nickName: user.nickName, }, });
+    
+    
+    const  { user }  = res.locals;
+    // console.log(res.locals)
     res.send({
-      userId: user.userId,
-      nickName: user.nickName,
+     user, 
+      
     });
     console.log(user)
   });

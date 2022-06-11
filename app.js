@@ -25,7 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/api", [postRouter, userRouter, commentRouter]);
+// app.use("/api", [postRouter, userRouter, commentRouter]);
+
+
+app.use('/api', express.urlencoded({ extended: false }), [ 
+    postRouter, userRouter, commentRouter ]);
 
 app.use("/", (req, res) =>{
     res.send('테스트 페이지')

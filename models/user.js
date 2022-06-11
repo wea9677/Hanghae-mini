@@ -19,10 +19,10 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-UserSchema.virtual("userId").get(function () {
+UserSchema.virtual('userId').get(function () {
     return this._id.toHexString();
   });
-  UserSchema.set("toJSON", {
+  UserSchema.set('toJSON', {
     virtuals: true,
   });
 
