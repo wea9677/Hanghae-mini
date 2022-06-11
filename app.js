@@ -1,23 +1,11 @@
 const express = require('express');
-<<<<<<< HEAD
-<<<<<<< HEAD
 const mongoose = require('mongoose');
-=======
-const mongoose = require('mongoose');   
->>>>>>> ce9e9bb371b57149401f2c4c14d4c8599d9b1fcb
-=======
-const mongoose = require('mongoose');   
->>>>>>> ce9e9bb371b57149401f2c4c14d4c8599d9b1fcb
 const port = 3000;
 
-
 const postRouter = require("./routes/post");
-<<<<<<< HEAD
 const userRouter = require("./routes/user");
+ 
 
-=======
-const userRouter = require("./models/user")
->>>>>>> 504de4eee909b197fd8fb04755fb83082c6d22da
 mongoose.connect('mongodb://0.0.0.0/goodnight', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
