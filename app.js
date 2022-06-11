@@ -1,11 +1,12 @@
 const express = require('express');
-const mongoose = require('mongoose');   
+const mongoose = require('mongoose');
 const port = 3000;
 
-
 const postRouter = require("./routes/post");
-const userRouter = require("./models/user")
-mongoose.connect('mongodb://0.0.0.0/goodnight', {
+const userRouter = require("./routes/user");
+ 
+
+mongoose.connect('mongodb://localhost:27017/miniproject', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

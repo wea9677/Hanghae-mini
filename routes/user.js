@@ -5,6 +5,8 @@ const Joi = require("joi");
 const jwt = require("jsonwebtoken")
 const authMiddelware = require("../middlewares/auth-middleware")
 
+
+
 //회원가입 양식
 const postUsersSchema = Joi.object({
     email: Joi.string().required(), //이메일 형식 'com','net'만 허용
@@ -15,7 +17,6 @@ const postUsersSchema = Joi.object({
 
   router.post("/signup", async (req, res) => {//회원가입
     try {
-        console.log("민ㅇ랃")
       const { nickName, password, repeat_password, email} =
         await postUsersSchema.validateAsync(req.body);
         console.log(req.body)
@@ -45,6 +46,7 @@ const postUsersSchema = Joi.object({
       res.status(400).send({
         errorMesssage: "요청한 데이터 형식이 올바르지 않습니다.",
       });
+      console.log(error)
     }
   });
 
@@ -83,6 +85,7 @@ const postUsersSchema = Joi.object({
       userId: user.userId,
       nickName: user.nickName,
     });
+    console.log(user)
   });
 
   module.exports = router;
