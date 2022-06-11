@@ -4,6 +4,7 @@ const port = 3000;
 
 
 const postRouter = require("./routes/post");
+const userRouter = require("./routes/user")
 
 mongoose.connect('mongodb://0.0.0.0/goodnight', {
     useNewUrlParser: true,
