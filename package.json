@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/seunghyeon5/Hanghae-mini/issues"
   },
-  "homepage": "https://github.com/seunghyeon5/Hanghae-mini#readme"
+  "homepage": "https://github.com/seunghyeon5/Hanghae-mini#readme",
+  "devDependencies": {}
 }

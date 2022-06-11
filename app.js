@@ -1,9 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
-
+const mongoose = require('mongoose');   
 const port = 3000;
 
-mongoose.connect('mongodb://0.0.0.0/goodnight', {
+const userRouter = require("./routes/user")
+
+mongoose.connect('mongodb://localhost:27017/miniproject', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -13,11 +14,14 @@ db.on('error', console.error.bind(console, 'connection error'));
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use("/api", userRouter);
+
 app.use("/", (req, res) =>{
     res.send('테스트 페이지')
 });
-
-
 
 
 app.listen(port, () => {
