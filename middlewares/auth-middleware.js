@@ -9,11 +9,6 @@ module.exports = (req, res, next) => {
 
     if(tokenType !== 'Bearer') {
         res.status(401).send({
-<<<<<<< HEAD
-            errorMessaage: '로그인 후 사용하세요!'
-=======
-            errorMessaage: '!로그인 후 사용하세요'
->>>>>>> f747c0bf2998d10075b1d17947ba68c32b191835
         });
     }
         const { userId } = jwt.verify(tokenValue, "mini-secret-key");
