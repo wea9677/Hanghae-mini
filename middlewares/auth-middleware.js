@@ -1,22 +1,25 @@
 const jwt = require("jsonwebtoken");
-const User  = require("../models/user");
+const User = require("../models/user");
 
 module.exports = (req, res, next) => {
-    try {
+    
     const { authorization } = req.headers;
     const [ tokenType, tokenValue ] = authorization.split(' ');
-    console.log(tokenType, tokenValue)
+    
+   
 
     if(tokenType !== 'Bearer') {
         res.status(401).send({
         });
+        return;
     }
-        const { userId } = jwt.verify(tokenValue, "mini-secret-key");
-        console.log("asdfe") //decoded가 제대로된 값
+    try {
+    const {userId} = jwt.verify(tokenValue, "mini-secret-key");
 
-        User.findById(userId).then((user) => {
-            res.locals.user = user;
-            console.log("asdw")
+         //decoded가 제대로된 값
+        
+        User.findById({userId}).exec().then((user) => {
+            res.locals.users = user;
             next();
         });
     } catch (error) { //제대로 안된 값
