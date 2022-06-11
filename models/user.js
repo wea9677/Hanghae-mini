@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
     nickName: {
         type: String,
     },
+    
 
     password: {
         type: String,
@@ -24,6 +25,7 @@ UserSchema.virtual("userId").get(function () {
   UserSchema.set("toJSON", {
     virtuals: true,
   });
+
 
 
 module.exports = mongoose.model('User', UserSchema);
