@@ -4,6 +4,7 @@ const port = 3000;
 
 const postRouter = require("./routes/post");
 const userRouter = require("./routes/user");
+const commentRouter = require("./routes/comment")
  
 
 mongoose.connect('mongodb://localhost:27017/miniproject', {
@@ -22,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/api", [postRouter, userRouter]);
+app.use("/api", [postRouter, userRouter, commentRouter]);
 
 app.use("/", (req, res) =>{
     res.send('테스트 페이지')
