@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
 const port = 3000;
 
 const postRouter = require("./routes/post");
+const userRouter = require("./routes/user");
 
 mongoose.connect('mongodb://0.0.0.0/goodnight', {
     useNewUrlParser: true,
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/api", postRouter);
+app.use("/api", [postRouter, userRouter]);
 
 app.use("/", (req, res) =>{
     res.send('테스트 페이지')

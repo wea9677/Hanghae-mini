@@ -1,21 +1,21 @@
+//회원정보(user) Schema
 const mongoose = require('mongoose');
-const { stringify } = require('querystring');
 
 const UserSchema = new mongoose.Schema({
-    
-    nickname: {
+    nickName: {
         type: String,
-        minlength: 3,
         unique: true,
+        required: true,
     },
 
     password: {
         type: String,
-        minlength: 4,
+        required: true,
     },
-    loginId: {
+
+    email: {
         type: String,
-        
+        required: true,
     }
 });
 

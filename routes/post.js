@@ -54,7 +54,7 @@ router.get("/main/:contentId", async (req, res)=>{
 
 //게시물 수정
 
-router.patch("/main/:contentId/modify", async (req, res)=> {
+router.patch("/write/:contentId", async (req, res)=> {
     const {contentId} = req.params;
     const {title, content, imageUrl} = req.body;
    
@@ -75,7 +75,7 @@ router.patch("/main/:contentId/modify", async (req, res)=> {
 
 
 //게시물 삭제
-router.delete("/main/:contentId/modify", async (req, res)=>{
+router.delete("/main/:contentId/delete", async (req, res)=>{
     
     const {contentId} = req.params;
 
