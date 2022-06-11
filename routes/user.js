@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken")
 const authMiddelware = require("../middlewares/auth-middleware")
 
 
+
 //회원가입 양식
 const postUsersSchema = Joi.object({
     email: Joi.string().required(), //이메일 형식 'com','net'만 허용
@@ -16,9 +17,6 @@ const postUsersSchema = Joi.object({
 
   router.post("/signup", async (req, res) => {//회원가입
     try {
-        // console.log("민ㅇ랃")
-        console.log("민ㅇ랃")
-
       const { nickName, password, repeat_password, email} =
         await postUsersSchema.validateAsync(req.body);
         console.log(req.body)
