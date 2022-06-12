@@ -126,7 +126,9 @@ const postUsersSchema = Joi.object({
     const  { user }  = res.locals;
     // console.log(res.locals)
     res.send({
-     user, 
+      userId: user.userId,
+      nickName: user.nickName,
+     
     });
     console.log(user)
   });
