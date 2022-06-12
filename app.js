@@ -8,7 +8,7 @@ const commentRouter = require("./routes/comment");
 
  
 
-mongoose.connect('mongodb://0.0.0.0/goodnight', {
+mongoose.connect('mongodb://localhost:27017/miniproject', {
 
     useNewUrlParser: true,
     useUnifiedTopology: true,
