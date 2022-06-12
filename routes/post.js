@@ -68,6 +68,7 @@ router.patch("/write/:contentId", authMiddleware, async (req, res)=> {
     const nickName = res.locals.user.nickName;
     // console.log(nickName);
     const {contentId} = req.params;
+    console.log(contentId);
     const {title, content, imageUrl} = req.body;
    
     const existsPost = await Post.findById(contentId);
