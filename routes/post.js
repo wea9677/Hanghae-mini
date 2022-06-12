@@ -63,44 +63,58 @@ router.get("/main/:contentId", authMiddleware, async (req, res)=>{
 
 //게시물 수정
 
-router.patch("/write/:contentId", async (req, res)=> {
+router.patch("/write/:contentId", authMiddleware, async (req, res)=> {
     // const nickName = res.locals.user.nickName;
+    const nickName = res.locals.user.nickName;
+    // console.log(nickName);
     const {contentId} = req.params;
     const {title, content, imageUrl} = req.body;
    
     const existsPost = await Post.findById(contentId);
-    // const chackPost = await Post.findOne(nickName);
-    if (!nickName.length) {
-        res.status(400).send({
-            errorMesssage:"작성한 닉네임과 일치하지 않습니다."
-        });
-        return;
-
-    }
+    // const chackPost = await res.locals.posts(nickName);
    
-    const modifyPost =  await Post.findByIdAndUpdate(contentId, {
-           $set : {title:title, content:content, imageUrl : imageUrl} ,
+    if (existsPost.nickName !== nickName) {
+        return res.status(400).json({existsPost, message: "닉네임이 일치하지 않습니다."
+    });
+        } else if (existsPost.nickName === nickName) {
+            await Post.findByIdAndUpdate( contentId , { $set: { title, content, imageUrl }});
+        }
+        res.status(200).json({existsPost, errorMessage: "수정 성공",
         });
-        res.status(201).json({
-            result:'success',
-            msg:"글이 수정되었습니다.",
-        })
+
+ });
+   
+    // const modifyPost =  await Post.findByIdAndUpdate(contentId, {
+    //        $set : {title:title, content:content, imageUrl : imageUrl} ,
+    //     });
+    //     res.status(201).json({
+    //         result:'success',
+    //         msg:"글이 수정되었습니다.",
+    //     })
         
-});
+// });
 
 
 
 
 
 //게시물 삭제
-router.delete("/main/:contentId/delete", async (req, res)=>{
-    
+router.delete("/main/:contentId/delete", authMiddleware, async (req, res)=>{
+    const nickName = res.locals.user.nickName;
     const {contentId} = req.params;
 
     const existsPost = await Post.findById(contentId);
-        // if(existsPost.length > 0) {
-            await Post.deleteOne({contentId});
-        //}
+    if (existsPost.nickName !== nickName) {
+        return res.status(400).json({existsPost, message: "닉네임이 일치하지 않습니다."
+    });
+    } else if (existsPost.nickName === nickName) {
+    await Post.findByIdAndDelete(contentId);
+    }
+
+    // const existsPost = await Post.findById(contentId);
+    //     // if(existsPost.length > 0) {
+    //         await Post.deleteOne({contentId});
+    //     //}
     res.json({result:"success"});
 
 });
