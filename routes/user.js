@@ -9,8 +9,8 @@ const authMiddelware = require("../middlewares/auth-middleware")
 
 //회원가입 양식
 const postUsersSchema = Joi.object({
-    email: Joi.string().required(), //이메일 형식 'com','net'만 허용
-    password: Joi.string().required(), //최소8자, 하나 이상의 문자, 하나의 숫자, 하나의 특수문자
+    email: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]+@+[0-9a-zA-Z-.]{3,30}$')), //이메일 형식 'com','net'만 허용
+    password: Joi.string().required().pattern(new RegExp('^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$')), //최소8자, 하나 이상의 영문자, 하나의 숫자, 하나의 특수문자
     repeat_password: Joi.string().required(),
     nickName: Joi.string().required(),
   });
@@ -53,10 +53,10 @@ const postUsersSchema = Joi.object({
     }
   });
 
-  const postAuthSchema = Joi.object({ //로그인
-    email: Joi.string().required(),//로그인 이메일 형식
-    password: Joi.string().required(),//최소 8자, 하나 이상의 문자, 하나의 숫자, 하나의 특수문자
-  });
+  // const postAuthSchema = Joi.object({ //로그인
+  //   email: Joi.string().required(),//로그인 이메일 형식
+  //   password: Joi.string().required(),//최소 8자, 하나 이상의 문자, 하나의 숫자, 하나의 특수문자
+  // });
   
   router.post("/login", async (req, res) => {//로그인
         const {email, password} = req.body;
@@ -128,7 +128,7 @@ const postUsersSchema = Joi.object({
     res.send({
       userId: user.userId,
       nickName: user.nickName,
-      
+     
     });
     console.log(user)
   });
