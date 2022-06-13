@@ -6,7 +6,7 @@ const authMiddleware = require('../middlewares/auth-middleware')
 
 
 // 게시물 좋아요
-router.post('/post/:contentId', authMiddleware, async (req, res) => {
+router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
     const { nickname } = res.locals.user;
     const { contentId } = req.params;
 
@@ -24,13 +24,13 @@ router.post('/post/:contentId', authMiddleware, async (req, res) => {
   });
 
  //좋아요 조회
-router.get('/post/:contentId', async (req,res) => {
+router.get('/post/:contentId/like', async (req,res) => {
     const findAllLike = await Like.find().count();
     res.status(200).json(findAllLike);
 });
 
 //좋아요 취소
-router.delete('/post/:contentId', async (req,res) =>{
+router.delete('/post/:contentId/like', async (req,res) =>{
     const { nickname } = res.locals.user;
 
     const findLike = await Like.findOne({nickname});
