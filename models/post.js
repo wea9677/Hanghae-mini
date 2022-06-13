@@ -26,11 +26,16 @@ const PostSchema = new mongoose.Schema(
             required:true,
             trim : true
 
-        }
+        },
+         date : {
+            type:Date,
+            default:new Date(utcNow + 9)    
+         }
+
 
         
 },
-    { timestamps: true }
+    
 );
 
 

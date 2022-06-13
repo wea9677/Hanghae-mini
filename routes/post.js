@@ -12,14 +12,15 @@ router.post("/post", authMiddleware, async (req, res) =>{
     try {
         
         const {nickName} = res.locals.user;
+        // const {Date} = new Date
         const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
              title, content, imageUrl, nickName
         });
         // console.log(createPost);
         // console.log(nickName);
-        res.json({post : createPost});
-        // res.json({result : "success", msg:"작성 완료 되었습니다."});
+        // res.json({post : createPost});
+        res.json({result : "success", msg:"작성 완료 되었습니다."});
     } catch (err) {
         // console.log(err)
         res.status(400).json({result:"fail", meg:"작성 실패"})
@@ -31,7 +32,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
 //게시물 조회
 
 router.get("/post/list", async (req, res) =>{
-   const contents = await Post.find().sort({createdAt : 'desc'});
+   const contents = await Post.find().sort({date : 'desc'});
     // let lastdate = createdAt
 
 
