@@ -7,17 +7,17 @@ const authMiddleware = require('../middlewares/auth-middleware')
 
 // 게시물 좋아요
 router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
-    const { nickname } = res.locals.user;
+    const {nickName} = res.locals.user;
     const { contentId } = req.params;
 
-    const findLike = await Like.findOne({nickname});
+    const findLike = await Like.findOne({nickName});
     
     if(findLike){
         res.status(400).send({ errorMessage: "이미 좋아요를 하셨습니다!"});
     }else{
 
     const like = await Like.create({
-        nickname, contentId
+        nickName, contentId
     });
     res.status(201).json({ result: 'success', msg: "좋아요 완료!"});
     }
