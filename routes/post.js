@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 //게시물 등록하기
-router.post("/write", authMiddleware, async (req, res) =>{
+router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
@@ -21,7 +21,7 @@ router.post("/write", authMiddleware, async (req, res) =>{
         res.json({post : createPost});
         // res.json({result : "success", msg:"작성 완료 되었습니다."});
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(400).json({result:"fail", meg:"작성 실패"})
     }
     
@@ -29,7 +29,7 @@ router.post("/write", authMiddleware, async (req, res) =>{
 
 });
 //게시물 조회
-router.get("/main", async (req, res) =>{
+router.get("/post", async (req, res) =>{
    const contents = await Post.find().sort({createdAt : 'desc'});
 
     res.json({contents});
@@ -39,7 +39,7 @@ router.get("/main", async (req, res) =>{
 
 //게시물 상세조회
 
-router.get("/main/:contentId", authMiddleware, async (req, res)=>{
+router.get("/post/:contentId", authMiddleware, async (req, res)=>{
     const {contentId} = req.params;
     const post = await Post.findById(contentId);
 
@@ -63,7 +63,7 @@ router.get("/main/:contentId", authMiddleware, async (req, res)=>{
 
 //게시물 수정
 
-router.patch("/write/:contentId", authMiddleware, async (req, res)=> {
+router.patch("post/write/:contentId", authMiddleware, async (req, res)=> {
     // const nickName = res.locals.user.nickName;
     const nickName = res.locals.user.nickName;
     // console.log(nickName);
@@ -100,7 +100,7 @@ router.patch("/write/:contentId", authMiddleware, async (req, res)=> {
 
 
 //게시물 삭제
-router.delete("/main/:contentId/delete", authMiddleware, async (req, res)=>{
+router.delete("/post/:contentId/delete", authMiddleware, async (req, res)=>{
     const nickName = res.locals.user.nickName;
     const {contentId} = req.params;
 
