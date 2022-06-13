@@ -45,7 +45,9 @@ const postUsersSchema = Joi.object({
       const users = new User({ nickName, password, email });
       await users.save();
       console.log(users)
-      res.status(201).send({});
+      res.status(201).send({
+        message : "회원가입에 성공하셨습니다!"
+      });
     } catch (error) {
       res.status(400).send({
         errorMesssage: "요청한 데이터 형식이 올바르지 않습니다.",
@@ -121,7 +123,7 @@ const postUsersSchema = Joi.object({
   // });
 
 
-  router.get("/user/signup/me", authMiddelware, (req, res) => { //로그인 조회
+  router.get("/user/signup/me", authMiddelware, async (req, res) => { //로그인 조회
 
     // const { user } = res.locals;
     // console.log(res.locals);
@@ -129,7 +131,7 @@ const postUsersSchema = Joi.object({
     // res.send({ user: { userId: user.userId, nickName: user.nickName, }, });
     
     
-    const  { user }  = res.locals;
+   const  { user }  = await res.locals;
     // console.log(res.locals)
     res.send({
       userId: user.email, 
