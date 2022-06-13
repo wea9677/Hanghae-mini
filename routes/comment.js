@@ -3,11 +3,11 @@ const Comments = require('../models/comment');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth-middleware');
 
-//댓글 조회
+//댓글 조회 .sort({createAt : 'desc'})
 
 router.get("/comment/:contentId",  async (req, res) => { //댓글 조회
     const { contentId } = req.params;
-    const allcomment = await Comments.find({contentId});
+    const allcomment = await Comments.find({contentId}).sort({createAt : 'desc'});
     res.send(allcomment);
   });
 //댓글 작성‹
