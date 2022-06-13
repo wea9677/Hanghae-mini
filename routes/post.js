@@ -1,7 +1,6 @@
 const express = require("express");
 const authMiddleware = require("../middlewares/auth-middleware");
 const Post = require("../models/post");
-
 const router = express.Router();
 
 
@@ -31,7 +30,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
 //게시물 조회
 
 router.get("/post/list", async (req, res) =>{
-   const contents = await Post.find().sort({createdAt : 'desc'}).limit(3);
+   const contents = await Post.find().sort({createdAt : 'desc'});
     // let lastdate = createdAt
 
 
@@ -39,6 +38,9 @@ router.get("/post/list", async (req, res) =>{
     res.json({contents});
    
 });
+
+
+
 
 
 //게시물 상세조회
