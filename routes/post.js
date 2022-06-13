@@ -1,6 +1,7 @@
 const express = require("express");
 const authMiddleware = require("../middlewares/auth-middleware");
 const Post = require("../models/post");
+const Comment = require("../models/comment");
 const router = express.Router();
 
 
@@ -111,14 +112,16 @@ router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
 
 //게시물 삭제
 router.delete("/post/:contentId/delete", authMiddleware, async (req, res)=>{
-    const nickName = res.locals.user.nickName;
+    const {nickName} = res.locals.user;
     const {contentId} = req.params;
 
     const existsPost = await Post.findById(contentId);
     if (existsPost.nickName !== nickName) {
         return res.status(400).json({existsPost, message: "닉네임이 일치하지 않습니다."
     });
-    } else if (existsPost.nickName === nickName) {
+    } else {
+
+    await Comment.deleteMany({contentId: contentId}); 
     await Post.findByIdAndDelete(contentId);
     }
 
