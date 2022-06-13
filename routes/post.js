@@ -32,7 +32,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
 //게시물 조회
 
 router.get("/post/list", async (req, res) =>{
-   const contents = await Post.find().sort({date : 'desc'});
+   const contents = await Post.find().sort({date : 'desc'}).limit(4);
     // let lastdate = createdAt
 
 
