@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const port = 8080;
-
+const cors = require("cors")
 const postRouter = require("./routes/post");
 const userRouter = require("./routes/user");
 const commentRouter = require("./routes/comment");
@@ -16,7 +16,7 @@ mongoose.connect('mongodb://0.0.0.0/miniproject', {
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
-
+app.use(cors());
 const app = express();
 
 
