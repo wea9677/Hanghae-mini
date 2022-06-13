@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 //게시물 등록하기
-router.post("/write", authMiddleware, async (req, res) =>{
+router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
@@ -29,8 +29,10 @@ router.post("/write", authMiddleware, async (req, res) =>{
 
 });
 //게시물 조회
-router.get("/main", async (req, res) =>{
-   const contents = await Post.find().sort({createdAt : 'desc'});
+router.get("/post/list", async (req, res) =>{
+   const contents = await Post.find().sort({createdAt : 'desc'}).limit(3);
+    // let lastdate = createdAt
+
 
     res.json({contents});
    
@@ -39,7 +41,7 @@ router.get("/main", async (req, res) =>{
 
 //게시물 상세조회
 
-router.get("/main/:contentId", authMiddleware, async (req, res)=>{
+router.get("/post/list/:contentId",  async (req, res)=>{
     const {contentId} = req.params;
     const post = await Post.findById(contentId);
 
@@ -63,12 +65,12 @@ router.get("/main/:contentId", authMiddleware, async (req, res)=>{
 
 //게시물 수정
 
-router.patch("/write/:contentId", authMiddleware, async (req, res)=> {
+router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
     // const nickName = res.locals.user.nickName;
     const nickName = res.locals.user.nickName;
     // console.log(nickName);
     const {contentId} = req.params;
-    console.log(contentId);
+    // console.log(contentId);
     const {title, content, imageUrl} = req.body;
    
     const existsPost = await Post.findById(contentId);
@@ -100,7 +102,7 @@ router.patch("/write/:contentId", authMiddleware, async (req, res)=> {
 
 
 //게시물 삭제
-router.delete("/main/:contentId/delete", authMiddleware, async (req, res)=>{
+router.delete("/post/:contentId/delete", authMiddleware, async (req, res)=>{
     const nickName = res.locals.user.nickName;
     const {contentId} = req.params;
 

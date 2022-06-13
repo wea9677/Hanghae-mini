@@ -15,7 +15,7 @@ const postUsersSchema = Joi.object({
     nickName: Joi.string().required(),
   });
 
-  router.post("/signup", async (req, res) => {//회원가입
+  router.post("/user/signup", async (req, res) => {//회원가입
     try {
       const { nickName, password, repeat_password, email} =
         await postUsersSchema.validateAsync(req.body);
@@ -58,7 +58,7 @@ const postUsersSchema = Joi.object({
   //   password: Joi.string().required(),//최소 8자, 하나 이상의 문자, 하나의 숫자, 하나의 특수문자
   // });
   
-  router.post("/login", async (req, res) => {//로그인
+  router.post("/user/login", async (req, res) => {//로그인
         const {email, password} = req.body;
 
         const user = await User.findOne({ email, password }).exec();
@@ -116,7 +116,7 @@ const postUsersSchema = Joi.object({
     
   // });
 
-  router.get("/signup/me", authMiddelware, (req, res) => { //로그인 조회
+  router.get("/user/signup/me", authMiddelware, (req, res) => { //로그인 조회
     // const { user } = res.locals;
     // console.log(res.locals);
     

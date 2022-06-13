@@ -4,12 +4,12 @@ const router = express.Router();
 const authMiddleware = require('../middlewares/auth-middleware');
 
 //댓글 조회
-router.get("/main/:contentId/comment", authMiddleware, async (req, res) => { //댓글 조회
+router.get("/post/:contentId/comment", authMiddleware, async (req, res) => { //댓글 조회
     const allcomment = await Comments.find({});
     res.send(allcomment);
   });
 //댓글 작성‹
-router.post("/main/:contentId/comment", authMiddleware, async (req, res) => {
+router.post("/post/:contentId/comment", authMiddleware, async (req, res) => {
     try {
         const { nickName } = res.locals.user;
         const { comment } = req.body;
@@ -29,7 +29,7 @@ router.post("/main/:contentId/comment", authMiddleware, async (req, res) => {
     }
 });
 //댓글 삭제
-router.delete("/main/:contentId/comment/delete/:commentId", authMiddleware, async (req, res) => {
+router.delete("/post/:contentId/comment/delete/:commentId", authMiddleware, async (req, res) => {
     const { commentId } = req.params;
     await Comments.deleteOne({ _id: commentId });
     res.send({result : "삭제 완료!"});
