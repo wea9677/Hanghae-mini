@@ -23,7 +23,7 @@ router.post("/comment/:contentId", authMiddleware, async (req, res) => {
             nickName, comment, contentId
         });
         res.status(201).json(commentContent);
-        console.log(commentContent)
+        // console.log(commentContent)
     } catch (error) {
         res.status(400).json({errorMassage: "댓글 작성 실패"})
         // console.log(error)

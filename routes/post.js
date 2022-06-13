@@ -21,7 +21,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
         res.json({post : createPost});
         // res.json({result : "success", msg:"작성 완료 되었습니다."});
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(400).json({result:"fail", meg:"작성 실패"})
     }
     

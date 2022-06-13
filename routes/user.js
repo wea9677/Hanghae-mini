@@ -128,7 +128,7 @@ const postUsersSchema = Joi.object({
     res.send({
       user
     });
-    console.log(user)
+    // console.log(user)
   });
 
   module.exports = router;
