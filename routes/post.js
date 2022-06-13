@@ -37,7 +37,7 @@ router.get("/post/list", async (req, res) =>{
 
 
 
-    res.json({contents});
+    res.status(200).json(contents);
    
 });
 
@@ -55,7 +55,7 @@ router.get("/post/list/:contentId",  async (req, res)=>{
     const post = await Post.findById(contentId);
 
 
-    res.json({post});
+    res.status(200).json(post);
 });
 
 
