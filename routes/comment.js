@@ -5,7 +5,7 @@ const authMiddleware = require('../middlewares/auth-middleware');
 
 //댓글 조회
 
-router.get("/comment/:contentId", authMiddleware, async (req, res) => { //댓글 조회
+router.get("/comment/:contentId",  async (req, res) => { //댓글 조회
     const { contentId } = req.params;
     const allcomment = await Comments.find({contentId});
     res.send(allcomment);
