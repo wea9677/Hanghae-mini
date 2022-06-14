@@ -1,6 +1,6 @@
 const express = require("express");
 
-
+const moment = require("moment");
 const authMiddleware = require("../middlewares/auth-middleware");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
@@ -14,7 +14,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
-        const nDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' } );
+        const nDate = moment().format("YYYY.MM.DD HH:mm:ss");
         console.log(nDate);
         const {nickName} = res.locals.user;
         // const  date = new date
@@ -23,7 +23,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
              title, content, imageUrl, nickName, nDate
         });
       
-        res.json({result : "success", msg:"작성 완료 되었습니다.", });
+        res.json({createPost, msg:"작성 완료 되었습니다.", });
     } catch (err) {
         // console.log(err)
         res.status(400).json({result:"fail", meg:"작성 실패"}, )
