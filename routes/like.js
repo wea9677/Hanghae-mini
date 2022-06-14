@@ -27,14 +27,16 @@ router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
   });
 
  //좋아요 조회
-router.get('/post/:contentId/like', async (req,res) => {
+router.get('/post/:contentId/like',  async (req,res) => {
+   
     const { contentId } = req.params;
     // console.log(contentId);
     const findAllLike = await Like.find({contentId});
-    const countLike = findAllLike.length 
-    console.log(countLike);
-    res.status(200).json(countLike);
+    console.log(findAllLike);
+    res.status(200).json(findAllLike);
 });
+
+
 
 
 
