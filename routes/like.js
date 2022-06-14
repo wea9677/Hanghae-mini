@@ -33,6 +33,7 @@ router.get('/post/:contentId/like',  async (req,res) => {
     // console.log(contentId);
     const findAllLike = await Like.find({contentId});
     console.log(findAllLike);
+
     res.status(200).json(findAllLike);
 });
 
