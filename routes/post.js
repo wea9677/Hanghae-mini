@@ -14,13 +14,14 @@ router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
-        const nDate = moment().format("YYYY.MM.DD HH:mm:ss");
+        const createAt = moment().format('YYYY-MM-DD HH:mm:ss');
+        const updateAt = moment().format('YYYY-MM-DD HH:mm:ss');
         // console.log(nDate);
         const {nickName} = res.locals.user;
         // const  date = new date
         const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
-             title, content, imageUrl, nickName, nDate
+             title, content, imageUrl, nickName, createAt, updateAt
         });
       
         res.json({createPost, msg:"작성 완료 되었습니다.", });
@@ -38,7 +39,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
 
 router.get("/post/list", async (req, res) =>{
    const contentId = req.params;
-   const contents = await Post.find(contentId).sort({ nDate : 'desc' });
+   const contents = await Post.find(contentId).sort({ createAt : 'desc' });
    
     // let lastdate = createdAt
 
@@ -89,6 +90,7 @@ router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
     const {contentId} = req.params;
     // console.log(contentId);
     const {title, content, imageUrl} = req.body;
+    const updateAt = moment().format('YYYY-MM-DD HH:mm:ss');
    
     const existsPost = await Post.findById(contentId);
     // const chackPost = await res.locals.posts(nickName);
@@ -97,7 +99,7 @@ router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
         return res.status(400).json({existsPost, message: "닉네임이 일치하지 않습니다."
     });
         } else if (existsPost.nickName === nickName) {
-            await Post.findByIdAndUpdate( contentId , { $set: { title, content, imageUrl }});
+            await Post.findByIdAndUpdate( contentId , { $set: { title, content, imageUrl, updateAt }});
         }
         res.status(200).json({existsPost, errorMessage: "수정 성공",
         });
