@@ -15,7 +15,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
         // const  date = new date
         const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
-             title, content, imageUrl, nickName
+             title, content, imageUrl, nickName, date
         });
         // console.log(createPost);
         // console.log(nickName);
