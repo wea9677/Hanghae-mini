@@ -12,7 +12,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
     try {
         
         const {nickName} = res.locals.user;
-        // const {Date} = new Date
+        // const  date = new date
         const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
              title, content, imageUrl, nickName
