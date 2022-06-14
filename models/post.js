@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment')
 // const Comment = require('../models/comment');
 
 const PostSchema = new mongoose.Schema(
@@ -27,19 +28,18 @@ const PostSchema = new mongoose.Schema(
             trim : true
 
         },
-         date : {
-            type:Date,
-            default:new Date()
-         }
 
-        
-     
+        nDate : String,
+             
+           
+
+      
          
 
 
         
 },
-   
+    // {timestamps:true}
 );
 
 

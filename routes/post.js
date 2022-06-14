@@ -1,7 +1,10 @@
 const express = require("express");
+
+
 const authMiddleware = require("../middlewares/auth-middleware");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+
 const router = express.Router();
 
 
@@ -11,19 +14,19 @@ router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
+        const nDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' } );
+        console.log(nDate);
         const {nickName} = res.locals.user;
         // const  date = new date
         const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
-             title, content, imageUrl, nickName
+             title, content, imageUrl, nickName, nDate
         });
-        // console.log(createPost);
-        // console.log(nickName);
-        // res.json({post : createPost});
-        res.json({result : "success", msg:"작성 완료 되었습니다."});
+      
+        res.json({result : "success", msg:"작성 완료 되었습니다.", });
     } catch (err) {
         // console.log(err)
-        res.status(400).json({result:"fail", meg:"작성 실패"})
+        res.status(400).json({result:"fail", meg:"작성 실패"}, )
     }
     
   
@@ -31,8 +34,11 @@ router.post("/post", authMiddleware, async (req, res) =>{
 });
 //게시물 조회
 
+
+
 router.get("/post/list", async (req, res) =>{
-   const contents = await Post.find().sort({date : 'desc'});
+   const contentId = req.params;
+   const contents = await Post.find(contentId).sort({ nDate : 'desc' });
    
     // let lastdate = createdAt
 
