@@ -14,11 +14,11 @@ router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
-        // const nDate = moment().format("YYYY.MM.DD HH:mm:ss");
-        console.log(nDate);
+        const nDate = moment().format("YYYY.MM.DD HH:mm:ss");
+        // console.log(nDate);
         const {nickName} = res.locals.user;
         // const  date = new date
-        const {title, content, imageUrl, nDate} = req.body;
+        const {title, content, imageUrl} = req.body;
         const createPost = await Post.create({
              title, content, imageUrl, nickName, nDate
         });

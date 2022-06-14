@@ -29,10 +29,7 @@ const PostSchema = new mongoose.Schema(
 
         },
 
-        nDate : {
-            type:String,
-            required:true
-        }
+        nDate : String
              
            
 
