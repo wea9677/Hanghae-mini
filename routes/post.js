@@ -103,7 +103,7 @@ router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
         } else if (existsPost.nickName === nickName) {
            const modifyPost = await Post.findByIdAndUpdate( contentId , { $set: { title, content, imageUrl, createAt }});
         }
-        res.status(200).json({rlsult:'success', errorMessage: "수정 성공",
+        res.status(200).json({result:'success', errorMessage: "수정 성공",
         });
 
  });
