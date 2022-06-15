@@ -101,9 +101,9 @@ router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
         return res.status(400).json({existsPost, message: "닉네임이 일치하지 않습니다."
     });
         } else if (existsPost.nickName === nickName) {
-            await Post.findByIdAndUpdate( contentId , { $set: { title, content, imageUrl, createAt }});
+           const modifyPost = await Post.findByIdAndUpdate( contentId , { $set: { title, content, imageUrl, createAt }});
         }
-        res.status(200).json({existsPost, errorMessage: "수정 성공",
+        res.status(200).json({rlsult:'success', errorMessage: "수정 성공",
         });
 
  });
