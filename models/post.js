@@ -31,7 +31,7 @@ const PostSchema = new mongoose.Schema(
 
         createAt:String,
         
-        updateAt:String
+        // updateAt:String
         
              
            

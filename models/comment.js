@@ -17,11 +17,15 @@ const CommentSchema = mongoose.Schema(
             required:true,
             trim : true
 
-        }
+        },
+        
+        createAt:String,
+        
+        // updateAt:String
 
 },
 
-    { timestamps: true }
+    // { timestamps: true }
 );
 
 CommentSchema.virtual('commentId').get(function () {
