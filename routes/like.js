@@ -10,10 +10,10 @@ router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
     const { nickName } = res.locals.user;
     const { contentId } = req.params;
 
-    const findLike = await Like.findOne({nickName});
+    const findLike = await Like.findOne({contentId});
     
   
-    if(findLike){
+    if(findLike.nickName!==nickName){
         res.status(400).send({ errorMessage: "이미 좋아요를 하셨습니다!"});
     }else{
 
