@@ -19,9 +19,9 @@ router.post("/post", authMiddleware, async (req, res) =>{
         // console.log(nDate);
         const {nickName} = res.locals.user;
         // const  date = new date
-        const {title, content, imageUrl} = req.body;
+        const {title, content, imageUrl, createAt} = req.body;
         const createPost = await Post.create({
-             title, content, imageUrl, nickName
+             title, content, imageUrl, nickName, createAt
         });
       
         res.json({createPost, msg:"작성 완료 되었습니다.", });

@@ -53,6 +53,10 @@ PostSchema.virtual("contentId").get(function () {
     virtuals: true,
   });
 
+// async function getPostList() {
+//     return Post.find().sort({ createAt : 'desc' });;
+// }
+
 
 
 
