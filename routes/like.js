@@ -52,7 +52,8 @@ router.delete('/post/:contentId/unlike', authMiddleware, async (req,res) =>{
         res.status(400).send({errorMessage: "좋아요를 하지 않았습니다."});
     }
 
-    const unLike = await Like.deleteOne(findLike);
+    const unLike = await Like.findOneAndDelete(findLike);
+    console.log(unLike);
     res.status(200).json({result: 'success', msg: "좋아요 취소 완료!", unLike})
 });
 
