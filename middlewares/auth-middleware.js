@@ -23,13 +23,13 @@ module.exports = async (req, res, next) => {
          //decoded가 제대로된 값
         
          
-      const user = await User.findById(userId).then((user) => {
+        User.findById(userId).then((user) => {
             res.locals.user = user;
             next();
         });
     } catch (error) { //제대로 안된 값
         res.status(401).send({
-            errorMessaage: "로그인 후 사용하세요",
+            errorMessage: "로그인 후 사용하세요",
         });
         return;
     }

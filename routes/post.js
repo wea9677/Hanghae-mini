@@ -40,8 +40,8 @@ router.post("/post", authMiddleware, async (req, res) =>{
 router.get("/post/list", async (req, res) =>{
    const contentId = req.params;
    const { page } = req.query;
-   console.log(page);
-   const contents = await Post.find(contentId).sort({ createAt : 'desc' }).skip(page).limit(4);
+//    console.log(page);
+   const contents = await Post.find(contentId).sort({ createAt : 'desc' }).skip(page);
    
     // let lastdate = createdAt
 
