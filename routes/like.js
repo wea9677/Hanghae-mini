@@ -10,7 +10,7 @@ router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
     const { nickName } = res.locals.user;
     const { contentId } = req.params;
 
-    const findLike = await Like.findOne({contentId, nickName});
+    const findLike = await Like.find({nickName});
     
   
     if(findLike){
