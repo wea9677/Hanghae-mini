@@ -40,7 +40,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
 router.get("/post/list", async (req, res) =>{
    const contentId = req.params;
    const { page } = req.query;
-   console.log(page);
+    // console.log(page);
    const contents = await Post.find(contentId).sort({ createAt : 'desc' }).skip(page).limit(2);
    console.log(contents.length);
     // let lastdate = createdAt
@@ -91,11 +91,11 @@ router.put("/post/:contentId/modify", authMiddleware, async (req, res)=> {
     // console.log(nickName);
     const {contentId} = req.params;
     // console.log(contentId);
-    const {title, content, imageUrl} = req.body;
-    // const updateAt = moment().format('YYYY-MM-DD HH:mm:ss');
+    const {title, content, imageUrl, createAt} = req.body;
+    
    
     const existsPost = await Post.findById(contentId);
-    // const chackPost = await res.locals.posts(nickName);
+    
    
     if (existsPost.nickName !== nickName) {
         return res.status(400).json({existsPost, message: "닉네임이 일치하지 않습니다."
