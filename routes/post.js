@@ -14,7 +14,7 @@ router.post("/post", authMiddleware, async (req, res) =>{
     
     try {
         
-        const createAt = moment().format('YYYY-MM-DD HH:mm:ss');
+        // const createAt = moment().format('YYYY-MM-DD HH:mm:ss');
         // const updateAt = moment().format('YYYY-MM-DD HH:mm:ss');
         // console.log(nDate);
         const {nickName} = res.locals.user;
