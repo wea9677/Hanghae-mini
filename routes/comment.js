@@ -16,7 +16,7 @@ router.post("/comment/:contentId", authMiddleware, async (req, res) => {
 
     try {
         const { nickName } = res.locals.user;
-        const { comment } = req.body;
+        const { comment, createAt } = req.body;
         const { contentId } = req.params;
         // console.log(nickName, comment, contentId)
 
@@ -24,7 +24,7 @@ router.post("/comment/:contentId", authMiddleware, async (req, res) => {
             res.status(400).send("댓글을 입력해주세요!")
         }
         const commentContent = await Comments.create({
-            nickName, comment, contentId
+            nickName, comment, contentId, createAt
         });
         res.status(201).json(commentContent);
         // console.log(commentContent)
