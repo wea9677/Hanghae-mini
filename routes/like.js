@@ -13,9 +13,9 @@ router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
     const findLike = await Like.findOne({contentId, nickName});
     
   
-    if(findLike){
-      return res.status(400).send({ errorMessage: "이미 좋아요를 하셨습니다!"});
-    }else{
+    // if(findLike){
+    //   return res.status(400).send({ errorMessage: "이미 좋아요를 하셨습니다!"});
+   // }else{
 
     const like = await Like.create({
         nickName, contentId
@@ -23,7 +23,7 @@ router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
     await like.save()
 
     res.status(201).json({ result: 'success', msg: "좋아요 완료!"});
-    }
+    //}
   });
 
  //좋아요 조회
