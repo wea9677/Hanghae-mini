@@ -13,7 +13,7 @@ router.post('/post/:contentId/like', authMiddleware, async (req, res) => {
     const findLike = await Like.findOne({contentId, nickName});
     
   
-    if(findLike.nickName!==nickName){
+    if(findLike){
       return res.status(400).send({ errorMessage: "이미 좋아요를 하셨습니다!"});
     }else{
 
