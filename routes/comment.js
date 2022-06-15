@@ -33,6 +33,31 @@ router.post("/comment/:contentId", authMiddleware, async (req, res) => {
         // console.log(error)
     }
 });
+
+router.put("/comment/:contentId/:commentId/modify", authMiddleware, async (req, res) =>{
+    const {nickName} = res.locals.user;
+    const {commentId} = req.params;
+    const {comment, createAt} = req.body;
+
+    const existComment = await Comments.findById(commentId)
+
+  
+    if (existComment.nickName !== nickName){
+        return res.status(400).json({errorMassage : "댓글 작성자만 수정 할 수 있습니다."
+    });
+
+    } else if (existComment.nickName === nickName) {
+       const modifyComment = await Comments.findByIdAndUpdate(commentId, {$set:{comment:comment, createAt:createAt},
+        });
+        console.log(modifyComment);
+    }
+    res.status(201).json({result:"success" , msg : "댓글 수정 완료!"});
+        
+
+    
+});
+
+
 //댓글 삭제
 
 router.delete("/comment/:contentId/:commentId", authMiddleware, async (req, res) => {
