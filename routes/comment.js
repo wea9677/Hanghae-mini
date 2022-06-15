@@ -10,7 +10,7 @@ router.get("/comment/:contentId",  async (req, res) => { //댓글 조회
     const allcomment = await Comments.find({contentId}).sort({createAt : 'desc'});
     res.send(allcomment);
   });
-//댓글 작성‹
+//댓글 작성
 
 router.post("/comment/:contentId", authMiddleware, async (req, res) => {
 
