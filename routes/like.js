@@ -44,7 +44,7 @@ router.get('/post/:contentId/like',  async (req,res) => {
 //좋아요 취소
 router.delete('/post/:contentId/unlike', authMiddleware, async (req,res) =>{
     const { nickName } = res.locals.user;
-    const {contentId} = res.params;
+    const {contentId} = req.params;
 
     const findLike = await Like.findOne({ contentId, nickName });
 
@@ -52,7 +52,7 @@ router.delete('/post/:contentId/unlike', authMiddleware, async (req,res) =>{
         res.status(400).send({errorMessage: "좋아요를 하지 않았습니다."});
     }
 
-    const unLike = await Like.findOneAndDelete(findLike);
+    const unLike = await Like.deleteOne(findLike);
     console.log(unLike);
     res.status(200).json({result: 'success', msg: "좋아요 취소 완료!", unLike})
 });
