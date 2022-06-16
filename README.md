@@ -37,10 +37,10 @@ JAVASCRIPT, NODEJS, EXPRESS, MongoDB 를 활용합니다.
 ## ERD
 ![이미지 2022  6  13  오후 6 05](https://user-images.githubusercontent.com/105096793/173970205-8ca6c155-69c0-43de-8312-6e43a145540b.jpeg)
 
-## API DESIGN
+## API Design
 ![스크린샷(477)](https://user-images.githubusercontent.com/72002228/173978866-e3a36ab5-070d-425f-9985-fe0b187ecdd7.png)
 
 
 
-## SA ADRRESS
+## SA Adrress
 https://www.notion.so/S-A-3-e2bbc99e7ce1472b8fb5a9e264f0bdbd
