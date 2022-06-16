@@ -44,5 +44,5 @@ JAVASCRIPT, NODEJS, EXPRESS, MongoDB, JEST 를 활용합니다.
 
 
 
-## SA Adrress
+## SA Address
 https://www.notion.so/S-A-3-e2bbc99e7ce1472b8fb5a9e264f0bdbd
