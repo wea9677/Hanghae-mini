@@ -4,7 +4,7 @@
   "description": "항해 6주차 미니프로젝트입니다.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/seunghyeon5/Hanghae-mini/issues"
   },
-  "homepage": "https://github.com/seunghyeon5/Hanghae-mini#readme"
+  "homepage": "https://github.com/seunghyeon5/Hanghae-mini#readme",
+  "devDependencies": {
+    "jest": "^28.1.1",
+    "supertest": "^6.2.3"
+  }
 }
