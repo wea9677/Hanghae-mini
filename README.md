@@ -20,6 +20,8 @@ JAVASCRIPT, NODEJS, EXPRESS, MongoDB 를 활용합니다.
 - 서버는 Amazon Web Service EC2 인스턴스에서 구동 중입니다.
 
 ## Prerequisite
+- Node.js - Node.js 및 npm 패키지 관리자를 [다운로드 및 설치합니다](https://nodejs.org/en/download/) . 문제가 발생하면 이 GitHub Gist 를 사용하여 Node.js를 설치할 수도 있습니다.
+- MongoDB - MongoDB 를 [다운로드 및 설치](http://mongodb.org/) 하고 기본 포트(27017)에서 실행 중인지 확인합니다.
 
 ## ERD
 ![이미지 2022  6  13  오후 6 05](https://user-images.githubusercontent.com/105096793/173970205-8ca6c155-69c0-43de-8312-6e43a145540b.jpeg)
