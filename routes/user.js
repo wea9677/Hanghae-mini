@@ -4,6 +4,7 @@ const router = express.Router();
 const Joi = require("joi");
 const jwt = require("jsonwebtoken")
 const authMiddelware = require("../middlewares/auth-middleware")
+const bcrypt = require("bcrypt");
 
 
 
@@ -67,12 +68,16 @@ const postUsersSchema = Joi.object({
 
         const {email, password} = req.body;
 
-        const user = await User.findOne({ email, password }).exec();
+        const user = await User.findOne({ email }).exec();
         if (!user) {
             res.status(400).send({
                 errorMessage: '이메일 또는 패스워드를 확인해주세요.',
             });
             return;
+        }
+        const confirmpassword = await bcrypt.compare(password, user.password);
+        if (!confirmpassword) {
+          return res.status(400).send({errorMessage :"이메일 또는 패스워드를 확인해주세요."})
         }
 
         // const id = user.userId;
