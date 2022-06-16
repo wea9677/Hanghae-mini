@@ -4,7 +4,7 @@
 잠이 필요한 분들을 위해서 정보를 공유할 수 있는 웹사이트 'Good Night'의 백엔드 서버입니다.
 
 ## Demo Video 📺 
-https://youtu.be/Fi7oqnWlLmo
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Fi7oqnWlLmo/0.jpg)](https://www.youtube.com/watch?v=Fi7oqnWlLmo)
 
 ## Environment
 <img src="https://img.shields.io/badge/-Amazon AWS-232F3E?style=flat&logo=Amazon AWS&logoColor=white"/>
