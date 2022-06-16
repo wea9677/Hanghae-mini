@@ -15,7 +15,7 @@ DATABASE는 MongoDB를 활용 중이며 ec2 인스턴스에서만 접근 할 수
   <img src="https://img.shields.io/badge/-Node.js-339933?style=flat&logo=Node.js&logoColor=white"/>
   <img src="https://img.shields.io/badge/-Mongodb-47A248?style=flat&logo=Mongodb&logoColor=white"/>
   <img src="https://img.shields.io/badge/-Visual Studio Code-007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-Jest-C21325?style=flat&logo=Jest&logoColor=white"/>
+  <img src="https://img.shields.io/badge/-Jest-C21325?style=flat&logo=Jest&logoColor=black"/>
 </div>
 
 JAVASCRIPT, NODEJS, EXPRESS, MongoDB, JEST 를 활용합니다.
