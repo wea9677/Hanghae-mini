@@ -18,6 +18,10 @@ DATABASE는 MongoDB를 활용 중이며 ec2 인스턴스에서만 접근 할 수
 
 JAVASCRIPT, NODEJS, EXPRESS, MongoDB 를 활용합니다.
 - 서버는 Amazon Web Service EC2 인스턴스에서 구동 중입니다.
+- USER : 회원가입, 로그인 기능, 로그인 토큰을 이용해서 홈페이지 활동 권한 구현
+- POST : 게시글 작성, 삭제, 수정, 조회 구현
+- COMMENT : 댓글 작성, 수정, 삭제 구현
+- LIKE : 좋아요 추가, 삭제 구현
 
 ## Prerequisite
 - Node.js - Node.js 및 npm 패키지 관리자를 [다운로드 및 설치합니다](https://nodejs.org/en/download/) . 문제가 발생하면 이 GitHub Gist 를 사용하여 Node.js를 설치할 수도 있습니다.
@@ -26,4 +30,7 @@ JAVASCRIPT, NODEJS, EXPRESS, MongoDB 를 활용합니다.
 ## ERD
 ![이미지 2022  6  13  오후 6 05](https://user-images.githubusercontent.com/105096793/173970205-8ca6c155-69c0-43de-8312-6e43a145540b.jpeg)
 
+## API DESIGN
+
+![8D60B7E9-F932-4904-9B88-53F6D92EFA1D_1_201_a](https://user-images.githubusercontent.com/105096793/173977632-bfa5f8ce-be89-45b2-b4f1-6514792143fe.jpeg)
 
