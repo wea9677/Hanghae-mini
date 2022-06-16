@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.pre("save", function (next) {
     const user = this;
   
-    // user가 password를 바꿀때만 hashing
+    // user가 password를 바꿀때만 hashing 비밀번호 변경은 구현 못함 ㅠㅠ
     if (user.isModified("password")) {
       bcrypt.genSalt(saltRounds, function (err, salt) {
         if (err) {
