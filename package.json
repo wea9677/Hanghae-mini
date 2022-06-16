@@ -31,5 +31,8 @@
     "bcrypt": "^5.0.1",
     "jest": "^28.1.1",
     "supertest": "^6.2.3"
+  },
+  "directories": {
+    "test": "test"
   }
 }

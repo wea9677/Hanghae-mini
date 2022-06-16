@@ -41,3 +41,5 @@ app.use("/", (req, res) =>{
 app.listen(port, () => {
     console.log(port, "포트로 서버가 켜졌어요!")
 });
+
+module.exports = app;
