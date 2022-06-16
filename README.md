@@ -18,7 +18,7 @@ DATABASE는 MongoDB를 활용 중이며 ec2 인스턴스에서만 접근 할 수
   <img src="https://img.shields.io/badge/-Jest-C21325?style=flat&logo=Jest&logoColor=white"/>
 </div>
 
-JAVASCRIPT, NODEJS, EXPRESS, MongoDB 를 활용합니다.
+JAVASCRIPT, NODEJS, EXPRESS, MongoDB, JEST 를 활용합니다.
 - 서버는 Amazon Web Service EC2 인스턴스에서 구동 중
 - Joi라이브러리를 활용한 이메일, 비밀번호 형식 구현
 - USER : 회원가입, 로그인 기능, 로그인 토큰을 이용해서 홈페이지 활동 권한 구현
