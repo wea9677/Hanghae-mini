@@ -25,7 +25,7 @@ JAVASCRIPT, NODEJS, EXPRESS, MongoDB 를 활용합니다.
 - POST : 게시글 작성, 삭제, 수정, 조회 구현
 - COMMENT : 댓글 작성, 수정, 삭제 구현
 - LIKE : 좋아요 추가, 삭제 구현
-- TEST : 인증미들웨어 테스트코드 구현
+- TEST : Jest라이브러리를 이용해 인증미들웨어 테스트코드 구현
 
 ## Prerequisite
 <div float: left; >
