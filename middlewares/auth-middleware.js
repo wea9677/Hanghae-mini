@@ -23,7 +23,8 @@ module.exports = async (req, res, next) => {
          //decoded가 제대로된 값
         
          
-        User.findById(userId).then((user) => {
+
+User.findById(userId).then((user) => {
             res.locals.user = user;
             next();
         });

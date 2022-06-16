@@ -70,7 +70,7 @@ const postUsersSchema = Joi.object({
         const user = await User.findOne({ email, password }).exec();
         if (!user) {
             res.status(400).send({
-                errorMessage: '닉네임 또는 패스워드를 확인해주세요.',
+                errorMessage: '이메일 또는 패스워드를 확인해주세요.',
             });
             return;
         }
@@ -131,13 +131,13 @@ const postUsersSchema = Joi.object({
     // res.send({ user: { userId: user.userId, nickName: user.nickName, }, });
     
     
-   const  { user }  = await res.locals;
+   const  { user }  =  res.locals;
     // console.log(res.locals)
     res.send({
       userId: user.email, 
       nickName: user.nickName
     });
-    // console.log(user)
+    console.log(user)
   });
 
   module.exports = router;
