@@ -13,4 +13,4 @@ NODEJS, EXPRESS, MongoDB 를 활용합니다.
 - 서버는 Amazon Web Service EC2 인스턴스에서 구동 중입니다.
 
 ## ERD
-https://www.notion.so/S-A-3-e2bbc99e7ce1472b8fb5a9e264f0bdbd#72b91357df634b32bb2f00fc569b1bfd
+![이미지 2022  6  13  오후 6 05](https://user-images.githubusercontent.com/105096793/173970205-8ca6c155-69c0-43de-8312-6e43a145540b.jpeg)
